@@ -7,25 +7,21 @@ var serverws = {
 	socket : null
 };
 	
-var timer = null;
+//var timer = null;
 
-
+// Procedure de connection à la websocket
 function serverws_connect(){
 
 	console.log("Essai Connection " + serverws.ip + ":" + serverws.port);
+	menu_connection_led(1) // voyant de connection orange
 	
-	// Passage du voyant de connection de rouge >> orange
-	$("#Led_Connect").attr("src","images/emergency/z_Led-Orange.gif")
-
 	var url = "ws://" + serverws.ip + ":" + serverws.port + "/";
 	serverws.socket = new WebSocket(url);
 	
 	try {
 		serverws.socket.onopen = function() {
 			console.log("connection serveur démarrée")
-			// fonction dans panel.js
-			//Passage du voyant de connection de orange >> vert
-			$("#Led_Connect").attr("src","images/emergency/z_Led-Verte.gif")
+			menu_connection_led(2) // voyant de connection vert
 			serverws_Open();
 		} 
 		
@@ -36,10 +32,9 @@ function serverws_connect(){
 		} 
 
 		serverws.socket.onclose = function(){
-			//console.log("connection serveur stoppée")
 			// fonction dans panel.js
-			console.log("Deconnection du Serveur");
-			$("#Led_Connect").attr("src","images/emergency/z_Led-Rouge.gif")
+			console.log("Deconnection du Serveur")
+			menu_connection_led(0) // voyant de connection rouge
 			serverws_Close();
 			// Fonction de reconnection automatique
 			//if(serverws.auto_connect){timer = setTimeout(serverws_connect,serverws.delay);}
@@ -47,10 +42,8 @@ function serverws_connect(){
 
 		serverws.socket.onerror = function(error){
 			console.log("ERREUR connection serveur")
-			//console.log("Erreur serveur : ");
-			$("#Led_Connect").attr("src","images/emergency/z_Led-Rouge.gif")
+			menu_connection_led(0) // voyant de connection rouge
 		}
-
 	} 
 
 	catch(exception) {
@@ -60,13 +53,46 @@ function serverws_connect(){
 	}
 }
 
+function serverws_Open(){
+	// Lancement de la boucle de rafraichissement du KaTZ-Pit
+	mytimer = setInterval(pit_main, 200);
+}
+
+function serverws_Message(event){
+
+	received_msg = event.data
+
+	// stockage du message sous forme d'objet
+	var new_data = JSON.parse(received_msg)
+	//console.log("message received",new_data);
+	
+	var dataref;
+	
+	// Transfert des données recues dans le tableau KaTZ-Pit_Data
+	for (dataref in new_data){
+		KaTZPit_data[dataref]=new_data[dataref]
+		}
+		
+	// Si reception d'un Ping sur le canal 8, on répond sur le canal 7
+	if (KaTZPit_data["Ping"] != KaTZPit_data["Ping_old"]){
+		CmdSiocSpe(7, KaTZPit_data["Ping"])
+		KaTZPit_data["Ping_old"] = KaTZPit_data["Ping"]
+	}
+		
+}
+
 
 function serverws_send(command){
 
 	if(serverws.socket.readyState==1){
 		serverws.socket.send(command);
-		console.log("Envoi de la commande _ module serverws_send ..", command);
+		//console.log("Envoi de la commande _ module serverws_send ..", command);
 	}
+}
+
+function serverws_Close(){
+	// Arrêt de la boucle de rafraichissement du KaTZ-Pit
+	clearInterval(mytimer);
 }
 
 

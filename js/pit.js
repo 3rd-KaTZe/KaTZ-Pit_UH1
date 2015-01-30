@@ -23,25 +23,22 @@ var CmdDelay;
 
 window.onload = function(){
 
-// Chargement et indication de l'IP et Port
-// Sur le panel Emergency
-menu_connection(KaTZPit_data)
+	// Chargement et indication de l'IP et Port
+	// Sur le panel Emergency
+	menu_connection(KaTZPit_data)
 
-// Initialisation des Panels affichés
+	// Initialisation des Panels affichés
 	Panel_On = panel_On_init();
 	menu_Toggle("Init")
-	
-//mytimer = setInterval(main, 200);
+
 }
 
 
-function main(){
+function pit_main(){
 
 	// Iteration Principale, fréquence fixée dans mytimer
 	
-	//	Mise à jour du voyant de connection 
-	menu_connection(KaTZPit_data)
-	
+		
 	// INSTRUMENT PANEL ------------------------------------------------
 	
 	// Mise à jour des cadrans des instruments de vol
@@ -79,9 +76,6 @@ function main(){
 	CmdSend()
 }
 
-// Fonction d'affichage des sous Panels, appelée depuis la barre de Launcher
-
-	
 
 
 // Fonction appelée par appui sur le bouton KaTZ-Pit START
@@ -98,7 +92,7 @@ function Pit_Start(plane){
 	panel_radio_init(KaTZPit_data);
 
 	// Affichage Initial
-	main();
+	pit_main();
 	//paneldata_update(KaTZPit_data)
 
 	// Lancement de la procédure de connection
@@ -106,43 +100,6 @@ function Pit_Start(plane){
 
 }
 
-
-function serverws_Open(){
-	// Lancement de la boucle de rafraichissement du KaTZ-Pit
-	// Vitesse de Rafraichissement du KaTZ-Pit ----------------------- millisecondes
-	mytimer = setInterval(main, 100);
-	//my2timer = setInterval(CmdSend(), 200);
-}
-
-function serverws_Message(event){
-
-	received_msg = event.data
-
-	// stockage du message sous forme d'objet
-	var new_data = JSON.parse(received_msg)
-	//console.log("message received",new_data);
-	
-	var dataref;
-	
-	// Transfert des données recues dans le tableau KaTZ-Pit_Data
-	for (dataref in new_data){
-		KaTZPit_data[dataref]=new_data[dataref]
-		}
-		
-	// Si reception d'un Ping sur le canal 8, on répond sur le canal 7
-	if (KaTZPit_data["Ping"] != KaTZPit_data["Ping_old"]){
-		CmdSiocSpe(7, KaTZPit_data["Ping"])
-		KaTZPit_data["Ping_old"] = KaTZPit_data["Ping"]
-	}
-		
-}
-
-function serverws_Close(){
-	// Arrêt de la boucle de rafraichissement du KaTZ-Pit
-	clearInterval(mytimer);
-}
-
-// Envoi de Commande vers Sioc>DCS, Argument Num voir Liste des Commandes DCS 
 
 
 
