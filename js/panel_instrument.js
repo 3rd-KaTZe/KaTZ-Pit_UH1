@@ -112,8 +112,8 @@ function panel_instrument_engine(KaTZPit_data){
 function panel_instrument_fuel(KaTZPit_data){
 
 		// Variable : Fuel_AV
-		var FuelP = dataread_split_2(KaTZPit_data["Fuel_AV"])[1]
-		var FuelQ = dataread_split_2(KaTZPit_data["Fuel_AV"])[0]
+		var FuelP = dataread_split_2(KaTZPit_data["Fuel_1"])[1]
+		var FuelQ = dataread_split_2(KaTZPit_data["Fuel_1"])[0]
 		// Cadrans Pression et Quantité Fuel
 		instrument_Fuel(FuelP,FuelQ)
 }
