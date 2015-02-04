@@ -55,7 +55,7 @@ function serverws_connect(){
 
 function serverws_Open(){
 	// Lancement de la boucle de rafraichissement du KaTZ-Pit
-	mytimer = setInterval(pit_main, 200);
+	mytimer = setInterval(pit_main, 100);
 }
 
 function serverws_Message(event){
