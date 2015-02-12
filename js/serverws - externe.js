@@ -1,5 +1,3 @@
-// Configuration deportée sur FTP de la 3rd
-
 var serverws = {
 	// IP + Port de la machine qui fait tourner le KaTZ-Link
 	ip : "88.185.6.208",

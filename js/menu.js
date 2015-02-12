@@ -3,18 +3,17 @@
 // --------------------------------------------------------------------
 
 function menu_connection(KaTZPit_data){
-
-	// Gestion des Alarmes
-	// Voyent Master warning
-	if (KaTZPit_data["Master_Warn"] ==1) {$("#VE_Alarm").fadeIn()} else {$("#VE_Alarm").fadeOut()}
 	
-	
-	// Debug
-	// Affichage des Valeurs tests affichées sous le bouton marche
-	var total_error = total_error + KaTZPit_data["Error"]
+	// Affichage de l'Ip et du Port
 	document.getElementById('IP_Host').innerHTML = serverws.ip
 	document.getElementById('IP_Port').innerHTML = serverws.port
-	
+}
+
+function menu_connection_led(flag){
+
+	if (flag == 0) {$("#Led_Connect").attr("src","images/emergency/z_Led-Rouge.gif")}
+	if (flag == 1) {$("#Led_Connect").attr("src","images/emergency/z_Led-Orange.gif")}
+	if (flag == 2) {$("#Led_Connect").attr("src","images/emergency/z_Led-Verte.gif")}
 	
 }
 
