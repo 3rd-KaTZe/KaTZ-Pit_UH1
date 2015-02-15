@@ -13,6 +13,12 @@ var serverws = {
 function serverws_connect(){
 
 	console.log("Essai Connection " + serverws.ip + ":" + serverws.port);
+	
+	try {
+        serverws.socket.close()
+     } catch(exception) {}
+    
+	
 	menu_connection_led(1) // voyant de connection orange
 	
 	var url = "ws://" + serverws.ip + ":" + serverws.port + "/";
