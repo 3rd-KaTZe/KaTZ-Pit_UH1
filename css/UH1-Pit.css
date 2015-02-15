@@ -186,6 +186,7 @@ p {
 	top: 780px;
 	left: 1480px;
 	/* Dimension 400 x 300			              */
+	font-family:arial, sans-serif;
 	font-style: italic;
 	color : #00FA9A;
 }
