@@ -4,6 +4,8 @@
 
 
 function panel_alarm_update(KaTZPit_data){
+
+	
 	// Flag Divers regroupées dans "Alarm_1"
 	// 1- Start -- Bouton desactivé dans l'UPdate 2014
 	// 2- Master Warning

@@ -37,8 +37,9 @@ window.onload = function(){
 function pit_main(){
 
 	// Iteration Principale, fréquence fixée dans mytimer
-	
-		
+	// Verification de DCS_Focus
+	DCS_Focus_check(KaTZPit_data)
+			
 	// INSTRUMENT PANEL ------------------------------------------------
 	
 	// Mise à jour des cadrans des instruments de vol
