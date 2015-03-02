@@ -65,6 +65,16 @@ function menu_Toggle(panel){
 	// CheckList
 	if (Panel_On["CheckList"] == 0) {document.getElementById("Check_List").style.display = "none"}
 	else {document.getElementById("Check_List").style.display = "block"}
+	
+	// Afficheur de position commande
+	if (Panel_On["Stick"] == 0) {
+	document.getElementById("Panel_Stick").style.display = "none" ;
+	document.getElementById("Cadran_CDI").style.display = "block" ;	
+	}
+	else {
+	document.getElementById("Panel_Stick").style.display = "block" ; 
+	document.getElementById("Cadran_CDI").style.display = "none" ;
+	}
 
 	
 

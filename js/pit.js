@@ -73,6 +73,8 @@ function pit_main(){
 	panel_weapon_flare(KaTZPit_data)}
 	
 	if (Panel_On["Radio_360"]==1){panel_radio_update(KaTZPit_data)}
+	
+	if (Panel_On["Stick"]==1){panel_pilototo_input(KaTZPit_data)}
 		
 	CmdSend()
 }
