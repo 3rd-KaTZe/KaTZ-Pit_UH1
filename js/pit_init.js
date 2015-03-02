@@ -12,7 +12,7 @@ function paneldata_init(){
 	var KaTZPit_data = {Error:0, Ping:0, Ping_old:0, Ordre1:0, Ordre2:0, DCS_Focus:0, Plane_Id:50, 	Test_val:0,
 		Clock:0, TimeMis:0, TimeFly:0, Shoot_time:99, Chrono:0, 
 		IAS:0, TAS:8888, QNH:50005000, QFE:0, AltiRad_D:0000, AltiRad_DX:50005000, AltiRad_FI:555, Mach:"---", Vario:0, Vari_unit:1,
-		AoA:0, Acc_G:0, Acc_Gmax:0, Acc_Gmin:0, 
+		AoA:0, Acc_G:0, Acc_Gmax:0, Acc_Gmin:0, Stick_Pos:50005000, Rudder_Pos:50005000,
 		Pitch:0, Bank:00, Yaw:0, ADI_FI:50005000, 
 		Way:90, Route:360, Cap:0, WP_dist:0, WP_num:88, Bullseye:0, EUP:50005000,
 		Eng_rpm:50005000, Eng_temp:50005000, Power_L:0, Power_R:0, Power_X:0, COff:0,
@@ -57,7 +57,7 @@ function panel_On_init(){
 
 var Panel_On = { Init:0, 
 	Breakers:0, Electric:1, Electric_DC:0, Electric_AC:0, 
-	APU:0, Start:1, 
+	APU:0, Start:1, Stick:0 ,
 	Rotor:0, Oil:0, Fuel:0, Engine:0, Hydro:0,
 	Analog_1:0, Analog_2:0, 
 	ARK_9:0, ARK_UD:0, Doppler:0, 
