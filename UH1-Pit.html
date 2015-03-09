@@ -41,6 +41,7 @@
 	<script type="text/javascript" src="js/panel_navigation.js"></script>
 	<script type="text/javascript" src="js/panel_pilototo.js"></script>
 	<script type="text/javascript" src="js/panel_radio.js"></script>
+	<script type="text/javascript" src="js/panel_target.js"></script>
 	<script type="text/javascript" src="js/panel_weapon.js"></script>
 	
 
@@ -475,7 +476,7 @@
 		<area shape="rect" coords="10,420,90,480" href="javascript:menu_Toggle('Vierge')">
 		<area shape="rect" coords="10,480,90,520" href="javascript:menu_Toggle('Vierge')">
 		<area shape="rect" coords="10,520,90,580" href="javascript:menu_Toggle('Radionav')">
-		<area shape="rect" coords="10,580,90,620" href="javascript:menu_Toggle('Vierge')">
+		<area shape="rect" coords="10,580,90,620" href="javascript:menu_Toggle('Target')">
 		<area shape="rect" coords="10,620,90,680" href="javascript:menu_Toggle('Vierge')">
 		<area shape="rect" coords="10,680,90,720" href="javascript:menu_Toggle('Stick')">
 		<area shape="rect" coords="10,720,90,780" href="javascript:menu_Toggle('Radio_360')">
@@ -959,6 +960,93 @@
 		
 </div>	
 
+<!-- xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx -->
+
+<div id="Panel_Target">
+
+	<img src="images/target/Target_Panel_Mi.png" width="240" height="410" border="0" usemap="#Panel_Target">
+	
+	<!-- Mapping des boutons M1, M2, M3, Km, DEG, 0 à 9 -->
+	<map name="Panel_Target">
+
+			<!-- Touche M1 à M3 -->
+			<area shape="rect" coords="70,10,120,60" href="javascript:Tgt_Key(31)">
+			<area shape="rect" coords="125,10,175,60" href="javascript:Tgt_Key(32)">
+			<area shape="rect" coords="180,10,230,60" href="javascript:Tgt_Key(33)">
+			
+			<!-- Touche Km et Deg -->
+			<area shape="rect" coords="10,170,60,200" href="javascript:Tgt_Key(12)">
+			<area shape="rect" coords="10,200,60,230" href="javascript:Tgt_Key(11)">
+			
+			<!-- Chiffres 0 à 9 -->
+			<area shape="rect" coords="70,230,100,260" href="javascript:Tgt_Key(0)">
+			<area shape="rect" coords="102,230,132,260" href="javascript:Tgt_Key(1)">
+			<area shape="rect" coords="134,230,164,260" href="javascript:Tgt_Key(2)">
+			<area shape="rect" coords="167,230,197,260" href="javascript:Tgt_Key(3)">
+			<area shape="rect" coords="199,230,229,260" href="javascript:Tgt_Key(4)">
+			<area shape="rect" coords="70,263,100,293" href="javascript:Tgt_Key(5)">
+			<area shape="rect" coords="102,263,132,293" href="javascript:Tgt_Key(6)">
+			<area shape="rect" coords="134,263,164,293" href="javascript:Tgt_Key(7)">
+			<area shape="rect" coords="167,263,197,293" href="javascript:Tgt_Key(8)">
+			<area shape="rect" coords="199,263,229,293" href="javascript:Tgt_Key(9)">
+	</map> 
+
+	<!-- Voyants Target System Memory -->
+	<!-- La subroutine est mappé sur le voyant éteint, le fond est allumé -->
+
+	<SPAN style="position: absolute; left: 70px; top: 120px; width: 50px; height: 50px">
+	<img src="images/target/T_M1Off.gif" width="50" height="50" border="0" id="VT_M1" usemap="#voyant1">
+	<map name="voyant1"> 
+	<area shape="rect" coords="0,0,40,40" href="javascript:Tgt_Key(21)"> </map> 
+	</SPAN> 
+
+	<SPAN style="position: absolute; left: 125px; top: 120px; width: 50px; height: 50px">
+	<img src="images/target/T_M2Off.gif" width="50" height="50" border="0" id="VT_M2" usemap="#voyant2">
+	<map name="voyant2">
+	<area shape="rect" coords="0,0,40,40" href="javascript:Tgt_Key(22)"> </map> 
+	</SPAN> 
+
+	<SPAN style="position: absolute; left: 180px; top: 120px; width: 50px; height: 50px">
+	<img src="images/target/T_M3Off.gif" width="50" height="50" border="0" id="VT_M3" usemap="#voyant3">
+	<map name="voyant3">
+	<area shape="rect" coords="0,0,40,40" href="javascript:Tgt_Key(23)"> </map> 
+	</SPAN> 
+	
+	<!-- Voyants Alerte WP Reference <> WP Actuel -->
+	
+	<SPAN style="position: absolute; left: 10px; top: 120px; width: 50px; height: 50px">
+	<img src="images/target/T_WarnOn.gif" width="50" height="50" border="0" id="VT_W">
+	</SPAN> 
+
+	<!-- Zone Data Target -->	
+	<SPAN style="position: absolute; left: 17px; top: 25px; width: 35px; height: 35px ;color:white ;text-align:center; font-size:1.5em; background-color:#333333" id="WP_Ref">	</SPAN>
+	
+	
+	<SPAN style="position: absolute; left: 70px; top: 70px; width: 40px; height: 25px ; color:yellow" id="T1_deg"> </SPAN>
+	<SPAN style="position: absolute; left: 125px; top: 70px; width: 40px; height: 25px ; color:yellow" id="T2_deg"> </SPAN>
+	<SPAN style="position: absolute; left: 180px; top: 70px; width: 40px; height: 25px ; color:yellow" id="T3_deg"> </SPAN>
+	<SPAN style="position: absolute; left: 70px; top: 90px; width: 40px; height: 25px ; color:#99FF99" id="T1_km">	</SPAN>
+	<SPAN style="position: absolute; left: 125px; top: 90px; width: 40px; height: 25px ; color:#99FF99" id="T2_km"> </SPAN>
+	<SPAN style="position: absolute; left: 180px; top: 90px; width: 40px; height: 25px ; color:#99FF99" id="T3_km"> </SPAN>
+
+	
+	<SPAN style="position: absolute; left: 70px; top: 180px; width: 40px; height: 25px ; color:yellow" id="TGT1_deg"> </SPAN>
+	<SPAN style="position: absolute; left: 125px; top: 180px; width: 40px; height: 25px ; color:yellow" id="TGT2_deg"> </SPAN>
+	<SPAN style="position: absolute; left: 180px; top: 180px; width: 40px; height: 25px ; color:yellow" id="TGT3_deg"> </SPAN>
+	<SPAN style="position: absolute; left: 70px; top: 202px; width: 40px; height: 25px ; color:#99FF99" id="TGT1_km"> </SPAN>
+	<SPAN style="position: absolute; left: 125px; top: 202px; width: 40px; height: 25px ; color:#99FF99" id="TGT2_km"> </SPAN>
+	<SPAN style="position: absolute; left: 180px; top: 202px; width: 40px; height: 25px ; color:#99FF99" id="TGT3_km"> </SPAN>
+		
+	<SPAN style="position: absolute; left: 10px; top: 252px; width: 50px; height: 20px ; background-color:#004411; color:yellow; text-align:center" id="TGT_keyin"> </SPAN>
+	
+	<SPAN style="position: absolute; left: 150px; top: 300px; width: 100px; height: 20px ; color:#99FF99" id="T_deltalat">	</SPAN>
+	<SPAN style="position: absolute; left: 150px; top: 315px; width: 100px; height: 20px ; color:#99FF99" id="T_deltalon">	</SPAN>
+	<SPAN style="position: absolute; left: 150px; top: 340px; width: 100px; height: 20px ; color:#99FF99" id="T_bullsbear">	</SPAN>
+	<SPAN style="position: absolute; left: 150px; top: 355px; width: 100px; height: 20px ; color:#99FF99" id="T_bullsdist">	</SPAN>
+	<SPAN style="position: absolute; left: 150px; top: 375px; width: 100px; height: 20px ; color:#99FF99" id="T_bullslat">	</SPAN>
+	<SPAN style="position: absolute; left: 150px; top: 390px; width: 100px; height: 20px ; color:#99FF99" id="T_bullslon">	</SPAN>
+
+</div>
 
 
 

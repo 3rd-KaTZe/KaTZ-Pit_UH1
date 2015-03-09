@@ -150,6 +150,10 @@ p {
 	left: 1050px;
 	/* Dimension 400 x 400			              */
 	text-align: center; 
+	font-family:arial, sans-serif;
+	font-size:100%;
+	text-align: center; 
+
 }
 
 #Cadran_HSI {
@@ -303,4 +307,13 @@ p {
 	left: 1050px;
 	/* Dimension 775 x 10			              */
 	
+}
+
+#Panel_Target {
+	position: absolute;
+	top: 020px;
+	left: 2430px;
+
+	font-family:arial, sans-serif;
+	text-align: center; 
 }
