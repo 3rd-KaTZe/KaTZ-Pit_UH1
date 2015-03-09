@@ -1,4 +1,3 @@
-
 // Les données affichées par le KaTZ-Pit sont stockées dans une liste KaTZPit_data
 // Les valeurs de cette liste sont mise à jour avec les données provenant du KaTZ-Link
 // Cette fonction permet d'initialiser les valeurs au démarrage ou reboot
@@ -42,7 +41,7 @@ function paneldata_init(){
 		T1_km:0, T1_deg:0, T2_km:0, T2_deg:0, T3_km:0, T3_deg:0, WPR1:1, WPR2:1, WPR3:1,
 		Freq_main:310, Freq_sub:100, Radiotype:1,
 		Chan_1_main:310, Chan_2_main:320, Chan_3_main:330, Chan_4_main:340, Chan_1_dec:100, Chan_2_dec:200, Chan_3_dec:300, Chan_4_dec:400,
-		Active_main:310, Active_sub:100, Active_chan:1,	VT_M1:0, VT_M2:0, VT_M3:0,
+		Active_main:310, Active_sub:100, Active_chan:1,	VT_M1:0, VT_M2:0, VT_M3:0 
 		}
 	
 	console.log("KaTZPit_data Initialisé")
@@ -63,7 +62,7 @@ var Panel_On = { Init:0,
 	ARK_9:0, ARK_UD:0, Doppler:0, 
 	Radio_360:1, Vierge:0, Navigation:0, 
 	Target:0, Weapon:0, Flare:0, Combat:1,
-	CheckList:0,
+	CheckList:0, Doc:0
 	}
 
 return (Panel_On);
