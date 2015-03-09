@@ -57,6 +57,10 @@ function pit_main(){
 	// Mise à jour des alarmes
 	panel_alarm_update(KaTZPit_data)
 	
+	// Panel Target
+	
+	if (Panel_On["Target"]==1){panel_target_update(KaTZPit_data)}	
+	
 		
 	// SYSTEM PANEL ------------------------------------------------------
 	

@@ -37,10 +37,19 @@ function menu_Toggle(panel){
 	// Panel Hydro and Engine regroupé sous Start
 	if (Panel_On["Start"] == 0) {
 	document.getElementById("Panel_Engine").style.display = "none"
-	document.getElementById("Panel_Hydro").style.display = "none"}
+	document.getElementById("Panel_Hydro").style.display = "none"
+	Panel_On["Target"] = 1
+	// document.getElementById("Panel_Target").style.display = "block"
+	}
 	else {
 	document.getElementById("Panel_Engine").style.display = "block"
-	document.getElementById("Panel_Hydro").style.display = "block"}
+	document.getElementById("Panel_Hydro").style.display = "block"
+	Panel_On["Target"] = 0
+	//document.getElementById("Panel_Target").style.display = "none"
+	}
+	
+	if (Panel_On["Target"] == 0) {document.getElementById("Panel_Target").style.display = "none"}
+	else {document.getElementById("Panel_Target").style.display = "block"}
 	
 	// Panel AC and DC regroupé sous Electric
 	if (Panel_On["Electric"] == 0) {
